@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { createUser, loginUser, revalidateToken } from "../controllers/auth";
 import { check } from "express-validator";
+import { validateFields } from "../middlewares/field-validators";
 
 const router = Router();
 
@@ -12,6 +13,7 @@ router.post(
     check("password", "password must be contain 6 letters").isLength({
       min: 6,
     }),
+    validateFields,
   ],
   createUser
 );
@@ -23,6 +25,7 @@ router.post(
     check("password", "password must be contain 6 letters").isLength({
       min: 6,
     }),
+    validateFields,
   ],
   loginUser
 );
