@@ -1,15 +1,21 @@
 import express from "express";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 
 //Routes
 
-app.get("/", (req, res) => {
-  res.json({
-    ok: true,
-  });
-});
+//Public directory
 
-app.listen(4000, () => {
-  console.log("server running on PORT:>> ", 4000);
+app.use(express.static("public"));
+// app.get("/", (req, res) => {
+//   res.json({
+//     ok: true,
+//   });
+// });
+
+app.listen(process.env.PORT, () => {
+  console.log("server running on PORT:>> ", process.env.PORT);
 });
