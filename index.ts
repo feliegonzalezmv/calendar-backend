@@ -8,13 +8,16 @@ const app = express();
 
 //Routes
 
-//TODO USERS
-app.use("/api/auth", router);
-//TODO CRUD EVENTS
-
 //Public directory
 
 app.use(express.static("public"));
+
+app.use(express.json());
+
+//TODO USERS
+app.use("/api/auth", router);
+
+//TODO CRUD EVENTS
 
 app.listen(process.env.PORT, () => {
   console.log("server running on PORT:>> ", process.env.PORT);
